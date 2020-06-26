@@ -1,0 +1,194 @@
+{% extends 'base.html' %} {% block css %}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>edit profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+    <style type="text/css">
+        body {
+            color: #fff;
+            font-family: 'Nunito Saemibold';
+            text-align: center;
+            margin: 0;
+            background-image: url("../../../media/images/vendor/background/vprofile-bg-img.jpg");
+            background-size: cover;
+        }
+        
+        label,
+        input {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+        }
+        /* body */
+        
+        #grid-wrapper {
+            display: grid;
+            max-width: 50%;
+            margin: auto;
+            grid-template-rows: auto auto;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            height: auto;
+        }
+        
+        .row1 {
+            display: grid;
+            grid-gap: 1em;
+            background-color: white;
+            grid-template-columns: 1fr 2fr;
+        }
+        
+        .row2 {
+            background-color: white;
+        }
+        
+        div label {
+            box-sizing: border-box;
+            border: 1px solid gray;
+            border-radius: 10px;
+            font-size: 14px;
+            background-color: white;
+            padding: 15px;
+            color: black;
+            height: 45px;
+            line-height: 15px;
+        }
+        
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid red;
+            border-radius: 10px;
+            font-size: 14px;
+            background-color: white;
+            padding: 15px;
+            color: black;
+            text-align: left;
+            height: 45px;
+        }
+        
+        .img {
+            height: 150px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid red;
+            border-radius: 10px;
+            font-size: 14px;
+            background-color: white;
+            padding: 15px;
+            color: black;
+            text-align: left;
+        }
+        
+        #save,
+        #cancel {
+            margin: 1.5%;
+            height: 3em;
+            width: 8em;
+            font-size: 15px;
+        }
+    </style>
+</head>
+{% endblock css %} {% block nav %}
+<div id="mynav">
+    <div class="topnav">
+
+        <a class="link" href="{% url 'logout' %}">Log Out</a>
+        <a class="link" href="{% url 'vendor_orders' %}">Your Orders</a>
+        <a class="link" href="{% url 'vendoradd' %}">Back</a>
+        <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+
+    </div>
+</div>
+{% endblock nav %} {% block content %}
+<form action='/vprofile' method='POST' enctype="multipart/form-data">
+    {% csrf_token %} {% if info%}
+
+    <div id="grid-wrapper">
+        <div class="row1">
+            <label for="Name">Name</label>
+            <div>
+                <input id="Name" name="Name" type="text" value="{{info.Name}}">
+            </div>
+            <label for="Username">Username</label>
+            <div>
+                <input id="Username" name="Username" type="text" value="{{info.Username}}" readonly>
+            </div>
+
+
+            <label for="Email">Email</label>
+            <div>
+                <input id="Email" name="Email" type="email" value="{{info.Email}}">
+            </div>
+
+            <label for="Password">Password</label>
+            <div>
+                <input id="Password" name="Password" type="password" value="{{info.Password}}">
+            </div>
+
+            <label for="Confirm">Confirm Password</label>
+            <div>
+                <input id="Confirm" name="Confirm" type="password" value="{{info.Confirm}}">
+            </div>
+
+            <label for="Aadhar">Aadhar no.</label>
+            <div>
+                <input id="Aadhar" name="Aadhar" type="number" value="{{info.Aadhar}}">
+            </div>
+
+            <label for="Code">Code</label>
+            <div>
+                <input id="Code" name="Code" type="text" value="{{info.Code}}">
+            </div>
+
+            <label for="PhoneNo">Phone no.</label>
+            <div>
+                <input id="PhoneNo" name="PhoneNo" type="number" value="{{info.PhoneNo}}">
+            </div>
+
+            <label for="Address">Address</label>
+            <div>
+                <input id="Address" name="Address" type="text" value="{{info.Address}}">
+            </div>
+
+            <label for="Kitchen">Name of the kitchen</label>
+            <div>
+                <input id="Kitchen" name="Kitchen" type="text" value="{{info.Kitchen}}">
+            </div>
+
+            <label for="Image" style="height: 150px;">Image</label>
+            <div class="img">
+                {% if info.Image %}
+                <img src="{{ info.Image.url }}" height="100%" width="50%"> {% endif %}
+            </div>
+
+        </div>
+        <div class="row2">
+            <input type="submit" id="save" class="btn btn-primary" value="Save" onclick="" />
+            <input type="reset" id="cancel" class="btn btn-primary" value="Cancel" onclick="" />
+
+        </div>
+    </div>
+    {% endif %}
+</form>
+
+<div style="align-items: center;">
+    {% for message in messages %}
+    <dialog style="color: black;">
+        {{message}} {% endfor %}
+
+    </dialog>
+</div>
+
+{% endblock content %}

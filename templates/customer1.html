@@ -1,0 +1,108 @@
+{% extends 'base.html' %} {% block css %} {% load static %}
+
+<head>
+    <title>Search nearby</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400|Ubuntu&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="styles.css">-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/aeaca870f5.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/customer/customer1.css' %}">
+</head>
+{% endblock css %} {% block nav %}
+
+<div id="mynav">
+    <div class="topnav">
+
+        <a class="link" href="{% url 'logout' %}">Log Out</a>
+        <a>{% for c in cprofile %}
+        {% if c.Image %}
+        <img src="{{ c.Image.url }}" height="50px" width="50px" style="border-radius: 50%;padding:0px;float:right;margin-top:15px; ">
+        {% endif %}
+        {% endfor %}
+      </a>
+        <a class="link" href="{% url 'cprofile' %}">View Profile</a>
+
+        <a class="link" href="{% url 'customer_orders' %}">Your Orders</a>
+        <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+
+    </div>
+</div>
+
+{% endblock nav %} {% block content %}
+
+
+<div class="wrapper">
+    <div class="grid-wrapper">
+        {% for card in vendor %}
+
+        <a href="customer2/{{card.Username}}" style="text-decoration: none;color:rgb(0, 0, 0)">
+            <div class="grid-items" onclick="customer2('{{card.Username}}')">
+                {% if card.Image %}
+                <img class="card__image" src="{{card.Image.url}}"> {% endif %}
+                <div class="card__content">
+                    <p id="kitchenname" name="kitchenname" style="font-size: 20px;">
+                        {{card.Kitchen}}
+                    </p>
+                    <p>
+                        {% for food in items %} {% if food.Username == card.Username %} {{food.name}}, {% endif %} {% endfor %}
+                    </p>
+                </div>
+                <div class="card__info">
+                    <div>
+                        <i class="material-icons">thumb_up</i>140
+                    </div>
+                    <div class="card__price">
+                        Rs200 for 2
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        {% endfor %}
+        <div style="display: flex;" id="cart" class="cart"></div>
+
+    </div>
+</div>
+<center><button id="scroll">⬙</button></center>
+
+<script>
+    var scr = function todo() { //for scroll down arrow
+        window.scrollBy(0, 100);
+    };
+    var to;
+    $('center button').hover(function(e) {
+        to = window.setInterval(scr, 1);
+    }, function(e) {
+        window.clearInterval(to);
+    })
+
+    function customer2(vendor) { //for saving name of vendor in local storage
+        var vendorname = {};
+        vendorname['name'] = vendor;
+        localStorage.setItem('vendorname-{{ user }}', JSON.stringify(vendorname));
+    }
+
+
+    // checking if main cart is empty or not
+    if (localStorage.getItem('cart-{{ user }}') == null) {
+        var maincart = {};
+    }
+
+    // if main cart contains items
+    else {
+        maincart = JSON.parse(localStorage.getItem('cart-{{ user }}'));
+    }
+</script>
+{% endblock content %}

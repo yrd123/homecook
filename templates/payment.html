@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% block css %}
+{% load static %}
+<title>Payment</title>
+<link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<a href="https://icons8.com/icon/DJn0I2iytpit/card-verification-value"></a>
+<link rel="stylesheet" type="text/css" href="{% static 'css/customer/payment.css' %}">
+<script language="JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+<script type="text/javascript">
+        window.onload = function() {
+            var cart = JSON.parse(localStorage.getItem('cart-{{ user }}-{{ userv }}'))
+            $("#ordered_items").val(JSON.stringify(cart));
+        }
+
+        function show1() {
+            document.getElementById('div2').style.display = 'none';
+            document.getElementById('div1').style.display = 'block';
+            document.getElementById('div3').style.display = 'none';
+
+        }
+
+        function show2() {
+            document.getElementById('div2').style.display = 'block';
+            document.getElementById('div1').style.display = 'none';
+            document.getElementById('div3').style.display = 'none';
+        }
+
+        function show3() {
+            document.getElementById('div1').style.display = 'none';
+            document.getElementById('div2').style.display = 'none';
+            document.getElementById('div3').style.display = 'block';
+        }
+        /*var cart=JSON.parse(localStorage.getItem('cart-{{ user }}-{{ userv }}')) 
+        console.log(cart);*/
+        function clearcart() {
+            localStorage.clear();
+        }
+</script>
+{% endblock css %}
+<body>
+    {% block nav %}
+    <div id="mynav">
+        <div class="topnav">
+            <a class="link" href="{% url 'login' %}">Login/Signup</a>
+            <a class="link" href="{% url 'about' %}">About</a>
+            <a class="link" href="{% url 'index' %}">Home</a>
+            <a href="{% url 'index' %}" class="icon">
+                <img class="iconimg" src="../media/logo/logo.png">
+            </a>
+        </div>
+    </div>
+    {% endblock nav %}
+        {% block content %}
+    <div class="main">
+        <div class="left">
+            <img class="image" src="../media/images/customer/background/payment1-img1.jpg">
+        </div>
+        <form method="POST" action="/customer_orders">
+            {% csrf_token %}
+            <input
+                type="hidden"
+                id="userv"
+                name="userv"
+                value="{{userv}}"
+            >
+            <input type="hidden" id="ordered_items" name="ordered_items">
+            <input type="hidden" id="grandTotal" name="grandTotal" value="{{priceDetails.grandTotal}}">
+            <div class="right">
+                <div class="order">
+                    <p class="tag">Order Summary</p>
+                    <div class="price-grid">
+                        <div class="grid-item">Subtotal</div>
+                        <div class="grid-item1">₹ {{priceDetails.subTotal}}</div>
+                        <div class="grid-item">Tax</div>
+                        <div class="grid-item1">₹ {{priceDetails.tax}}</div>
+                        <div class="grid-item">Delivery</div>
+                        <div class="grid-item1">₹ {{priceDetails.delivery}}</div>
+                        <div class="grid-item">Discount</div>
+                        <div class="grid-item1">-₹ {{priceDetails.discount}}</div>
+                        <div class="grid-item0">
+                            <b>Total</b>
+                        </div>
+                        <div class="grid-item2" id="total">
+                            <b>₹ {{priceDetails.grandTotal}}</b>
+                        </div>
+                    </div>
+                </div>
+                <label class="pay2">
+                    <input type="radio" name="tab1" id="tab3" value="igotno" class="option-input radio" onclick="show3();" >
+                    <span class="cod">Delivery Address</span>
+                </label>
+                <div id="div3" class="hide">
+                    <span>As default address is set ,you can change if you want</span>
+                    <div class="email">
+                        Email
+                        <br>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            value="{{cprofile.Email}}"
+                        >
+                    </div>
+                    <br>
+                    <div class="address">
+                        Address
+                        <br>
+                        <input
+                            type="text"
+                            name="address"
+                            id="address"
+                            value="{{cprofile.Address}}"
+                        >
+                    </div>
+                    <br>
+                    <div class="divide">
+                        <div class="zip">
+                            Zip Code
+                            <br>
+                            <input type="text" name="zip" id="zip" value="{{cprofile.Code}}">
+                        </div>
+                        <br>
+                        <div class="phone">
+                            Phone No.
+                            <br>
+                            <input
+                                type="text"
+                                name="phone"
+                                id="phone"
+                                value="{{cprofile.PhoneNo}}"
+                            >
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <label class="pay1">
+                    <input
+                        type="radio"
+                        name="tab1"
+                        id="tab1"
+                        value="cod"
+                        class="option-input radio"
+                        onclick="show1();"
+                    >
+                    <span class="cod">Cash On Delivery</span>
+                </label>
+                <div id="div1" class="hide">
+                    <span>Pay with cash on delivery</span>
+                    <button
+                        class="button1"
+                        type="submit"
+                        style="margin-bottom: 2%;"
+                        onclick="clearcart()"
+                    >Place Order</button>
+                    <br>
+                </div>
+                <label class="pay2">
+                    <input
+                        type="radio"
+                        name="tab1"
+                        id="tab2"
+                        value="card"
+                        class="option-input radio"
+                        onclick="show2();"
+                    >
+                    <span class="cod">Credit /Debit Cards</span>
+                    <img src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d8844094130711885b5e41b28c9848f.svg">
+                    <img src="https://js.stripe.com/v3/fingerprinted/img/visa-365725566f9578a9589553aa9296d178.svg">
+                    <img src="https://js.stripe.com/v3/fingerprinted/img/amex-a49b82f46c5cd6a96a6e418a6ca1717c.svg">
+                </label>
+                <div id="div2" class="hide">
+                    <div id="payment-form">
+                        <div class="card-number">
+                            Card Number
+                            <br>
+                            <input type="text" name="card-number" id="card-number">
+                        </div>
+                        <br>
+                        <div class="card-holder">
+                            Card Holder Name
+                            <br>
+                            <input type="text" name="card-holder" id="card-holder">
+                        </div>
+                        <br>
+                        <div class="divide">
+                            <div class="month">
+                                Expiration Date
+                                <br>
+                                <input type="text" name="month" id="month" placeholder="  MM / YY" maxlength="4" size="4" >
+                            </div>
+                            <div class="cvv">
+                                CVV
+                                <br>
+                                <input type="text" name="cvv" id="cvv" placeholder="* * *">
+                            </div>
+                        </div>
+                        <br>
+                        <button class="button1" type="submit" onclick="clearcart()">Place Order</button>
+                        <br>
+                        <p class="info">
+                            <i class="fa fa-lock" style="font-size:15px"></i>
+                            Your card payment is encrypted
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

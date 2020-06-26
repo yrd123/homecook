@@ -1,0 +1,494 @@
+ * {
+     box-sizing: border-box
+ }
+ 
+ body {
+     font-family: Arial;
+     margin: 0
+ }
+ 
+ .mySlides {
+     display: none
+ }
+ 
+ img {
+     vertical-align: middle;
+ }
+ /* Slideshow container */
+ 
+ .slideshow-container {
+     width: 100%;
+     height: 50%;
+     position: relative;
+     margin: auto;
+ }
+ /* Next & previous buttons */
+ 
+ .prev,
+ .next {
+     cursor: pointer;
+     position: absolute;
+     top: 50%;
+     width: auto;
+     padding: 16px;
+     margin-top: -22px;
+     color: white;
+     font-weight: bold;
+     font-size: 35px;
+     border-radius: 0 3px 3px 0;
+     user-select: none;
+ }
+ /* Position the "next button" to the right */
+ 
+ .next {
+     right: 0;
+     border-radius: 3px 0 0 3px;
+ }
+ /* Caption text */
+ 
+ .text1 {
+     color: #f2f2f2;
+     font-size: 45px;
+     padding-right: 50px;
+     position: absolute;
+     top: 100px;
+     width: 100%;
+     padding-left: 1000px;
+     padding-top: 70px;
+ }
+ 
+ #mynav {
+     position: fixed;
+     margin: 0px;
+     width: 100%;
+ }
+ /* The navbar */
+ 
+ .topnav {
+     overflow: hidden;
+     top: 0;
+     /* Position the navbar at the top of the page */
+     width: 100%;
+     height: 100px;
+     transition: background-color;
+     transition-duration: 0.5s;
+ }
+ /* Navbar links */
+ 
+ .topnav a.link {
+     float: right;
+     color: #fff;
+     text-align: center;
+     padding: 34px 20px;
+     text-decoration: none;
+     font-size: 22px;
+     font-family: Arial;
+     transition: background-color;
+     transition-duration: 0.5s;
+ }
+ 
+ .topnav a:hover {
+     background-color: rgb(0, 0, 0, 0.8);
+     border-radius: 5px;
+ }
+ 
+ .nav-colored {
+     overflow: hidden;
+     background-color: #222222;
+     transition: background-color;
+     transition-duration: 0.5s;
+     position: fixed;
+     top: 0;
+     width: 100%;
+     height: 65px;
+ }
+ 
+ .nav-colored a.link {
+     display: block;
+     float: right;
+     color: #fff;
+     text-align: center;
+     padding: 15px 20px;
+     text-decoration: none;
+     font-size: 22px;
+     font-family: Arial;
+     transition: background-color;
+     transition-duration: 0.5s;
+ }
+ 
+ .nav-colored a:hover {
+     background: rgb(0, 0, 0, 0.25);
+ }
+ 
+ .icon {
+     position: absolute;
+     float: left;
+     padding: 10px;
+     transition: background-color;
+     transition-duration: 0.5s;
+ }
+ 
+ .iconimg {
+     height: 80px;
+     width: 80px;
+ }
+ 
+ .nav-colored .iconimg {
+     height: 50px;
+     width: 50px;
+ }
+ /* The dots/bullets/indicators */
+ 
+ .dot {
+     cursor: pointer;
+     height: 15px;
+     width: 15px;
+     margin: 2px 2px;
+     background-color: #bbb;
+     border-radius: 50%;
+     display: inline-block;
+     transition: background-color 0.6s ease;
+ }
+ 
+ .active,
+ .dot:hover {
+     background-color: #717171;
+ }
+ /* Fading animation */
+ 
+ .fade {
+     -webkit-animation-name: fade;
+     -webkit-animation-duration: 1.5s;
+     animation-name: fade;
+     animation-duration: 1.5s;
+     animation-iteration-count: 1;
+ }
+ 
+ .flex-container {
+     display: flex;
+     flex-flow: row wrap;
+     background-color: #ffffff;
+     padding-bottom: 2%;
+ }
+ 
+ .flex-container>div {
+     background-color: white;
+     width: 270px;
+     margin: 14px;
+     text-align: center;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     border-radius: 15px;
+ }
+ 
+ .field {
+     height: 270px;
+     border: none;
+     text-align: center;
+     font-size: 20px;
+     margin-bottom: 2%;
+ }
+ 
+ .field-text {
+     width: 100%;
+     margin-top: 2%;
+     text-align: center;
+     font-size: 40px;
+     font-family: Arial;
+ }
+ 
+ .field-text>span {
+     font-size: 20px;
+     font-family: Arial;
+     padding: 0.5%;
+ }
+ 
+ .imgsvg {
+     padding-top: 70px;
+     padding-bottom: 30px;
+     height: 70%;
+ }
+ 
+ .star {
+     font-size: 650%;
+     color: #222222;
+ }
+ 
+ .text4-main {
+     margin: 2%;
+     color: #788188;
+     font-family: Arial;
+     line-height: 1.5;
+     font-size: 25px;
+     padding-bottom: 10px;
+     width: 45%;
+     float: left;
+ }
+ 
+ .text4 {
+     color: black;
+     text-indent: 20px;
+     font-size: 35px;
+     font-family: Arial;
+ }
+ 
+ .text4-img {
+     float: right;
+     width: 45%;
+     margin: 2%;
+     display: flex;
+ }
+ 
+ .text4-imgcol {
+     width: 50%;
+     margin-right: 10px;
+     border-radius: 4px;
+ }
+ 
+ .text4-imgcol:hover {
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ 
+ .footer {
+     position: relative;
+     left: 0;
+     bottom: 0;
+     width: 100%;
+     background-color: #232020;
+     color: white;
+     text-align: center;
+     padding: 0.5% 0.5%;
+ }
+ 
+ .end {
+     color: white;
+     letter-spacing: 2px;
+     font-size: 1.2rem;
+ }
+ 
+ .container {
+     display: flex;
+     padding: 2%;
+     margin: 0;
+     overflow: auto;
+     white-space: nowrap;
+     width: 100%;
+ }
+ /* On smaller screens, decrease text size */
+ 
+ @media screen and (max-width: 600px) {
+     .prev,
+     .slides,
+     .next,
+     .text1,
+     .topnav a.link {
+         font-size: 10px
+     }
+     .topnav,
+     .nav-colored {
+         height: 60px
+     }
+     .iconimg {
+         height: 30px;
+         width: 30px;
+     }
+     .text1 {
+         padding-right: 300px
+     }
+     .text4-main {
+         font-size: 10px;
+     }
+     .Mcard {
+         margin: 10px;
+     }
+ }
+ 
+ @media only screen and (max-width: 749px) {
+     .text4-main,
+     .topnav a.link {
+         font-size: 1opx;
+     }
+     .topnav,
+     .nav-colored {
+         height: 70px
+     }
+     .iconimg {
+         height: 50px;
+         width: 50px;
+     }
+ }
+ 
+ @media screen and (min-width: 600px) and (max-width: 1200px) {
+     .prev,
+     .next,
+     .text1,
+     .text2,
+     .topnav a.link {
+         font-size: 20px
+     }
+     .text1 {
+         padding-right: 300px
+     }
+     .topnav,
+     .nav-colored {
+         height: 80px
+     }
+     .iconimg {
+         height: 50px;
+         width: 50px;
+     }
+     .text4-main {
+         font-size: 13px;
+     }
+ }
+ 
+ @media screen and (max-width: 1200px) {
+     .flex-container>div {
+         width: 100%;
+         margin-right: 34px;
+         margin-left: 34px;
+         border-radius: 30px;
+     }
+     .imgsvg {
+         padding-top: 30px;
+     }
+     .field {
+         height: 200px;
+     }
+     .card-img-top {
+         height: 150px;
+     }
+     .star {
+         font-size: 500%;
+     }
+ }
+ 
+ #loader-wrapper {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: 1000;
+ }
+ 
+ #loader {
+     display: block;
+     position: relative;
+     left: 50%;
+     top: 50%;
+     width: 150px;
+     height: 150px;
+     margin: -75px 0 0 -75px;
+     border-radius: 50%;
+     border: 3px solid transparent;
+     z-index: 1001;
+ }
+ 
+ #loader-wrapper .loader-section {
+     position: fixed;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     background: #222222;
+     z-index: 1000;
+ }
+ 
+ .loaded #loader {
+     opacity: 0;
+     transition: all 0.7s ease-out;
+ }
+ 
+ .loaded #loader-wrapper {
+     visibility: hidden;
+     opacity: 0;
+     transition: all 0.7s ease-out;
+ }
+ /*seller card*/
+ 
+ .Mcards {
+     margin: 0 auto;
+     max-width: 1400px;
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+     grid-auto-rows: auto;
+     gap: 20px;
+     font-family: sans-serif;
+     padding-top: 30px;
+     box-sizing: border-box;
+     padding-bottom: 30px;
+ }
+ 
+ .Mcard {
+     background-color: rgba(255, 255, 255, 0.8);
+     border-radius: 18px;
+     background: white;
+     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+     transition: 0.5s ease;
+     cursor: pointer;
+     overflow: hidden;
+     transition-property: transform, box-shadow;
+     transition-duration: .4s, .5s;
+ }
+ 
+ .Mcard:hover {
+     transform: scale(1.05);
+     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+ }
+ 
+ .card__image {
+     width: 100%;
+     height: 300px;
+     object-fit: cover;
+     display: block;
+ }
+ 
+ .card__content {
+     line-height: 1.5;
+     font-size: 0.9em;
+     padding: 15px;
+     background: #fafafa;
+ }
+ 
+ .card__content>p:first-of-type {
+     margin-top: 0;
+ }
+ 
+ .card__content>p:last-of-type {
+     margin-bottom: 0;
+ }
+ 
+ .card__info {
+     padding: 15px;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     color: #555555;
+     background: #eeeeee;
+     font-size: 0.8em;
+ }
+ 
+ .card__info i {
+     font-size: 0.9em;
+     margin-right: 8px;
+ }
+ 
+ .card__price {
+     color: #c24311;
+     text-decoration: none;
+ }
+ /* Footer */
+ 
+ #footer {
+     padding: 2.5% 15%;
+     text-align: center;
+     background-color: #232020;
+     position: relative;
+     height: 80px;
+     clear: both;
+ }
+ 
+ .end {
+     color: grey;
+     letter-spacing: 2px;
+     font-size: 1.2rem;
+ }

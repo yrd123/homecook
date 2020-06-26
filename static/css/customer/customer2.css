@@ -1,0 +1,232 @@
+body {
+    margin: 0;
+}
+
+
+/*navigation bar*/
+
+li input[type=search] {
+    width: 300px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: white;
+    margin: 1.5%;
+    padding: 8px;
+    color: black;
+    transition: width 0.4s ease-in-out;
+    height: 10%;
+    text-align: left;
+    margin-top: 8px;
+}
+
+li input[type=search]:focus {
+    width: 400px;
+}
+
+
+/*itemssss*/
+
+#main {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 20px;
+    min-height: 100vh;
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(650px, 1fr));
+    margin-bottom: 100px;
+    zoom: 85%;
+}
+
+.right_part {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vendor {
+    width: 400px;
+    height: 400px;
+}
+
+.vinfo {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.vimage {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.vcontent {
+    line-height: 1.5;
+    font-size: 0.9em;
+    padding: 15px;
+    background: #eeeeee;
+    text-align: center;
+}
+
+.ucart {
+    width: 400px;
+    height: auto;
+}
+
+.uinfo {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+.ucontent {
+    line-height: 1.3;
+    font-size: 0.8em;
+    padding: 10px;
+    background: #eeeeee;
+}
+
+.uviewcart {
+    line-height: 1.3;
+    font-size: 0.8em;
+    padding: 10px;
+    background: rgb(221, 6, 6);
+    color: #fafafa;
+    cursor: pointer;
+    transition: 0.2s ease;
+    transition-property: background;
+}
+
+.uviewcart:hover {
+    background: rgb(255, 0, 0);
+}
+
+.utable {
+    margin-left: 120px;
+    padding: 10px;
+    float: none;
+}
+
+
+/*product card*/
+
+.Pcardcontainer {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-auto-rows: auto;
+    gap: 40px;
+    font-family: sans-serif;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    box-sizing: border-box;
+}
+
+.Pcard {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.5s ease;
+    overflow: hidden;
+    transition-property: transform, box-shadow;
+    transition-duration: .4s, .5s;
+    display: grid;
+    max-width: 370px;
+    grid-template-columns: 140px 140px 90px;
+    grid-template-rows: auto auto;
+    text-align: center;
+}
+
+.Pcard:hover {
+    transform: scale(1.02);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+
+/*.Pcard__image {
+width: 100px;
+height: 100px;
+
+object-fit: cover;
+display: block;
+grid-row-start: 1;
+grid-row-end: 3;
+grid-column-start: 1;
+grid-column-end: 2;
+}*/
+
+.Pcard__name {
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding-top: 4px;
+    background: #ffffff;
+    width: auto;
+    text-align: center;
+}
+
+.Pcard__content>p:first-of-type {
+    margin-top: 0;
+}
+
+.Pcard__content>p:last-of-type {
+    margin-bottom: 0;
+}
+
+.Pcard__addtocart {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 3;
+    color: #555555;
+    background: #eeeeee;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.Pcard__addtocart:hover {
+    background: rgb(212, 212, 212);
+}
+
+.adt {
+    margin-top: 25px;
+}
+
+.inp {
+    width: 90px;
+    height: 30px;
+    color: black;
+    margin-left: 25px;
+    border: 1px solid #d5d5d5;
+}
+
+.inpcontainer {
+    grid-row: 2;
+    grid-column: 2;
+    text-align: center;
+    align-items: center;
+    padding: 1px 0px;
+}
+
+.Pcard__price {
+    grid-row: 2;
+    grid-column: 1;
+    color: #c24311;
+    text-decoration: none;
+    margin-top: 6px;
+}
+
+.uviewcart a:hover {
+    color: black;
+    text-decoration: none;
+}

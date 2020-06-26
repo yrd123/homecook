@@ -1,0 +1,124 @@
+{% extends 'base.html' %} {% block css %} {% load static %}
+
+<head>
+    <title>vendor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/vendoradd.css' %}">
+</head>
+{% endblock css %}
+
+<body>
+    {% block nav %}
+
+    <div id="mynav">
+        <div class="topnav">
+
+            <a class="link" href="{% url 'logout' %}">Log Out</a>
+            <a class="link" href="{% url 'vprofile' %}">View Profile</a>
+            <a class="link" href="{% url 'vendor_orders' %}">Your Orders</a>
+            <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+
+        </div>
+    </div>
+    {% endblock nav %} {% block content %}
+
+    <div class='profile'>
+        <div class="name">
+            {% if Dp %} {{Dp.Kitchen}} {% endif %}
+
+        </div>
+
+        <div class="propic">
+            {% if Dp.Image %}
+            <img style="height: 100%;width:100%;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.61);border-radius: 5px;" src="{{Dp.Image.url}}"> {% endif %}
+        </div>
+
+        <div class="list">
+            <a href="#">Reviews<i class="fas fa-heart"></i></a>
+            <a href="#">Finance<i class="fas fa-chart-line"></i></a>
+            <a href="#">Orders<i class="fas fa-list-alt"></i></a>
+        </div>
+    </div>
+
+    <div class="items">
+
+        <br><br>
+        <div class="items-1">
+            <form id="addelement" action='/vendoradd_upload' method="POST">
+                {% csrf_token %}
+                <table id="my-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="name" name="name" /></td>
+                        <td><input type='text' id="price" name="price" /></td>
+                        <td><input type='text' id="quantity" name="quantity" /></td>
+                        <br>
+                    </tr>
+                    <tr class="last-row">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                </table>
+                <br>
+
+                <input type="submit" id="add" value="Add item" />
+            </form>
+            <!--ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd-->
+            <br><br>
+        </div>
+        <div class="items-2">
+            <table id="myTableData">
+
+                <tr>
+
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th style="width: 95px;">&nbsp;</th>
+
+                </tr>
+                {% for item in items %}
+
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+
+                    <form id="vend" action='/vendordel' method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" id="u" name="u" value="{{item.Username}}">
+                        <input type="hidden" id="n" name="n" value="{{item.name}}">
+                        <input type="hidden" id="p" name="p" value="{{item.price}}">
+                        <input type="hidden" id="q" name="q" value="{{item.quantity}}">
+                        <td><input type="submit" id="del" class="btn btn-primary" value="Delete" /></td>
+                    </form>
+
+                </tr>
+
+                {% endfor %}
+                <tr class="last-row">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+
+            </table>
+
+            &nbsp;
+        </div>
+
+    </div>
+
+    {% endblock content %}
+
+</body>

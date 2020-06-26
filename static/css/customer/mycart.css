@@ -1,0 +1,163 @@
+/*my cart*/
+
+#main {
+    margin: 0px 4% 4%;
+    padding: 30px 20px;
+    zoom: 75%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    background: white;
+}
+
+.header {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    background: white;
+}
+
+/* Left column */
+
+.leftcolumn {
+    float: left;
+    width: 65%;
+}
+
+.card .grid-container {
+    border-left: 32px solid rgb(224, 224, 224);
+    border-right: 32px solid rgb(224, 224, 224);
+}
+
+/* Right column */
+
+.rightcolumn {
+    float: left;
+    width: 35%;
+    padding-left: 10%;
+}
+
+.card {
+    margin-top: 20px;
+    transition: transform .2s;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.grid-container {
+    display: grid;
+    background-color: white;
+    padding: 5px;
+    border-radius: 25px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item {
+    padding: 17px;
+    font-size: 25px;
+    align-self: center;
+}
+
+.items {
+    grid-template-columns: 26% 26% 26% 22%;
+    width: 65%;
+    align-self: center;
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto auto auto;
+}
+
+.button {
+    background-color: #d81010;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border-radius: 10px;
+}
+
+.button:hover {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    text-decoration: none;
+    color: white;
+    background-color: #ff0000;
+}
+
+.delete {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 20px 22px;
+    text-align: center;
+    display: inline-block;
+    font-size: 29px;
+    border-radius: 100%;
+}
+
+.delete:hover {
+    background-color: rgb(199, 0, 0);
+}
+
+.explore {
+    float: right;
+    margin-top: 10px;
+    border-radius: 10px;
+    margin-right: 7.8%;
+}
+
+.main-heading {
+    display: inline-block;
+}
+
+.subheading {
+    font-size: 30px;
+}
+
+.right-heading {
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(163, 163, 163);
+}
+
+.kitchen-items {
+    grid-template-rows: auto auto auto;
+    margin: 35px auto;
+    text-align: center;
+}
+
+.price-details {
+    margin: 35px auto;
+    font-size: 20px;
+    width: 100%;
+    padding: 20px auto;
+}
+
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}

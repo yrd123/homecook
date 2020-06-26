@@ -1,0 +1,142 @@
+{% extends 'base.html' %} {% block css %}{% load static %}
+
+<head>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <title>Customer Order History</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/customer/customer_orders.css' %}">
+
+    <script type="text/javascript">
+        function show1() {
+            document.getElementById('show1').style.display = 'block';
+            document.getElementById('show2').style.display = 'none';
+        }
+
+        function show2() {
+            document.getElementById('show2').style.display = 'block';
+            document.getElementById('show1').style.display = 'none';
+
+        }
+    </script>
+
+</head>
+{% endblock css %} {% block nav %}
+
+<div id="mynav" style="float: top;">
+    <div class="topnav">
+
+        <a class="link" href="{% url 'logout' %}">Log Out</a>
+        <a class="link" href="{% url 'cprofile' %}">View Profile</a>
+        <a class="link" href="{% url 'customer_orders' %}">Your Orders</a>
+        <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+
+    </div>
+</div>
+
+{% endblock nav %} {% block content %}
+<div class="main">
+
+    <div class="submain">
+
+        <div id="left">
+            <ul>
+                <li class="li active" onclick="show1()"><span class="icon"><i class="fas fa-clipboard-check"></i></span><span class="text">Previous Orders</span></li>
+                <li class="li" onclick="show2()"><span class="icon"><i class="fas fa-user"></i></span><span class="text">Current Orders</span></li>
+            </ul>
+
+        </div>
+
+        <div class="right">
+
+
+            <div id="show2">
+                <div class="tag-name">Current Orders</div>
+                {% for order in current_orders %}
+                <div class="box">
+                    <div class="card-content">
+                        <div class="image">
+                            {% if order.vendor.Image %}
+                            <img class="user-image" src="{{order.vendor.Image.url}}"> {% endif %}
+                        </div>
+                        <div class="user-details">
+                            <div class="name">{{order.vendor.Kitchen}}</div>
+                            <div class="data"><textarea style="border:0px;width:300px;height:70px;color:rgb(139, 139, 139)" readonly>{{order.vendor.Address}},{{order.vendor.Code}} </textarea></div>
+                            <div class="data"><span class="card-label-sml">Contact: </span> {{order.vendor.PhoneNo}}</div>
+                        </div>
+                        <div class="user-details2">
+                            <div class="data">ORDER ID:<b>{{order.orderId}}</b>&nbsp;&nbsp; |&nbsp;&nbsp; {{order.orderDate}}</div>
+                            <div class="data"><span class="card-label-sml">Deliver to: </span><br><textarea style="border:0px;width:300px;color:rgb(139, 139, 139);" readonly>{{order.address}}, {{order.zipCode}}</textarea> </div>
+                            <div class="data"><span class="card-label-sml">Phone: </span>{{order.phoneNo}}</div>
+                            <div class="data"><b>Paid By:</b> {{order.paymentMode}}</div>
+                        </div>
+                    </div>
+                    <div class="order">
+                        <div class="menu">{{order.ordered_items}}</div>
+                        <div class="button">
+                            {% if order.status == 'placed' %}
+                            <div class="accept"><i class="fas fa-check"></i> PLACED</div>
+                            {% elif order.status == 'accepted' %}
+                            <div class="accept"><i class="far fa-check-circle"></i> ACCEPTED</div>
+                            {% else %}
+                            <div class="accept"><i class="fas fa-truck"></i> DELIVERY IN PROGRESS</div>
+                            {% endif %}
+                        </div>
+                        <div class="total">Total : Rs. {{order.grandTotal}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div id="show1">
+                <div class="tag-name">Previous Orders</div>
+                {% for order in completed_orders %}
+                <div class="box">
+                    <div class="card-content">
+                        <div class="image">
+                            {% if order.vendor.Image %}
+                            <img class="user-image" src="{{order.vendor.Image.url}}"> {% endif %}
+                        </div>
+                        <div class="user-details">
+                            <div class="name">{{order.vendor.Kitchen}}</div>
+                            <div class="data"><textarea style="border:0px;width:300px;height:70px;color:rgb(139, 139, 139)" readonly>{{order.vendor.Address}},{{order.vendor.Code}} </textarea></div>
+                            <div class="data"><span class="card-label-sml">Contact: </span> {{order.vendor.PhoneNo}}</div>
+                        </div>
+                        <div class="user-details2">
+                            <div class="data">ORDER ID:<b>{{order.orderId}}</b>&nbsp;&nbsp; |&nbsp;&nbsp; {{order.orderDate}}</div>
+                            <div class="data"><span class="card-label-sml">Deliver to: </span><br><textarea style="border:0px;width:300px;color:rgb(139, 139, 139);" readonly>{{order.address}}, {{order.zipCode}}</textarea> </div>
+                            <div class="data"><span class="card-label-sml">Phone: </span>{{order.phoneNo}}</div>
+                            <div class="data"><b>Paid By:</b> {{order.paymentMode}}</div>
+                        </div>
+                    </div>
+                    <div class="order">
+                        <div class="menu">{{order.ordered_items}}</div>
+                        <div class="button">
+                            {% if order.status == 'delivered' %}
+                            <div class="accept"><i class="fas fa-truck"></i> DELIVERED</div>
+                            {% else %}
+                            <div class="decline"><i class="far fa-times-circle"></i> REJECTED</div>
+                            {% endif %}
+                        </div>
+                        <div class="total">Total : Rs. {{order.grandTotal}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("left");
+    var btns = header.getElementsByClassName("li");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script>
+{% endblock content %}

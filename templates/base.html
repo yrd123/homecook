@@ -1,0 +1,139 @@
+{% load static %}
+<html>
+    <head>
+        <style>
+        * {
+            box-sizing: border-box
+        }
+        
+        .wrapper {
+            min-height: calc(100vh - 80px);
+        }
+        
+        #mynav {
+            margin: 0px;
+            width: 100%;
+        }
+        /* The navbar */
+        
+        .topnav {
+            overflow: hidden;
+            background-color: #222222;
+            top: 0;
+            width: 100%;
+            height: 80px;
+        }
+        /* Navbar links */
+        
+        .topnav a.link {
+            display: block;
+            float: right;
+            color: #fff;
+            text-align: center;
+            padding: 2% 1%;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: Arial;
+            transition: background-color;
+            transition-duration: 0.5s;
+            height: 100%;
+        }
+        
+        .topnav a:hover {
+            background: rgb(0, 0, 0, 0.25);
+        }
+        
+        .topnav .icon {
+            padding: 10px;
+            transition: background-color;
+            transition-duration: 0.5s;
+            float: left;
+        }
+        
+        .iconimg {
+            height: 65px;
+            width: 65px;
+        }
+        /* On smaller screens, decrease text size */
+        
+        @media screen and (max-width: 600px) {
+            .topnav a.link {
+                font-size: 10px
+            }
+            .topnav {
+                height: 60px
+            }
+            .iconimg {
+                height: 45px;
+                width: 45px;
+            }
+            .topnav a.link {
+                padding-top: 22px;
+            }
+        }
+        
+        @media screen and (min-width: 600px) and (max-width: 800px) {
+            .topnav a.link {
+                font-size: 15px;
+            }
+            .topnav {
+                height: 70px
+            }
+            .iconimg {
+                height: 50px;
+                width: 50px;
+            }
+            .topnav a.link {
+                padding-top: 22px;
+            }
+        }
+        
+        @media screen and (min-width: 800px) and (max-width: 1000px) {
+            .topnav a.link {
+                font-size: 20px
+            }
+            .topnav {
+                height: 80px
+            }
+            .iconimg {
+                height: 65px;
+                width: 65px;
+            }
+            .topnav a.link {
+                padding-top: 22px;
+            }
+        }
+        /* Footer */
+        
+        .footer {
+            left: 0;
+            bottom: 0;
+            padding: 2.5% 15%;
+            text-align: center;
+            background-color: #232020;
+            position: relative;
+            height: 80px;
+            clear: both;
+        }
+        
+        .end {
+            color: grey;
+            letter-spacing: 2px;
+            font-size: 1rem;
+        }
+        
+        body {
+            margin: 0;
+        }
+        </style>
+        {% block css %} {% endblock css %}
+    </head>
+    <body>
+        <div class="wrapper">
+            {% block nav %} {% endblock nav %} {% block content %} {% endblock content %}
+        </div>
+        <footer class="footer">
+            <p class="end">© Copyright 2020 HomeCooking</p>
+        </footer>
+    </body>
+</html>

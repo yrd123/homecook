@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400|Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amaranth" rel="stylesheet">
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/aeaca870f5.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main/index.css' %}">
+</head>
+
+<body>
+    {% load static %}
+    <div id="loader-wrapper">
+        <video id="loader" autoplay loop muted playsinline src="../media/logo/logo_1_1.mp4"></video>
+        <div class="loader-section"></div>
+    </div>
+    <div class="slideshow-container">
+        <div id="mynav">
+            <div class="topnav">
+                <a class="link" href="{% url 'login' %}">Login/Signup</a>
+                <a class="link" href="{% url 'contacts' %}">Contact</a>
+                <a class="link" href="{% url 'about' %}">About</a>
+                <a href="#home" class="icon">
+                    <img class="iconimg" src="../media/logo/logo.png">
+                </a>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img class="slides" src="../media/images/main/homepage_images/11.png" style="width:100%;">
+        </div>
+        <div class="mySlides">
+            <img class="slides" src="../media/images/main/homepage_images/12.png" style="width:100%;">
+        </div>
+        <div class="mySlides">
+            <img class="slides" src="../media/images/main/homepage_images/13.png" style="width:100%;">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+    <div class="flex-container">
+        <h2 class="field-text">
+            How it works.
+            <br>
+            <span>Simple easy steps.</span>
+        </h2>
+        <div>
+            <fieldset class="field">
+                <img class="imgsvg" src="../media/images/main/homepage_images/icon_home_1.svg">
+                <br>
+                Login/Register
+                <br>
+                Tell us about yourself
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="field">
+                <img class="imgsvg" src="../media/images/main/homepage_images/icon_home_2.svg">
+                <br>
+                Pick a menu
+                <br>
+                North,South,Chinese
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="field">
+                <img class="imgsvg" src="../media/images/main/homepage_images/icon_home_3.svg">
+                <br>
+                Pay
+                <br>
+                Cash on delivery
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="field">
+                <img class="imgsvg" src="../media/images/main/homepage_images/icon_home_4.svg">
+                <br>
+                Delivered
+                <br>
+                At door step/When you order
+            </fieldset>
+        </div>
+        <div>
+            <fieldset class="field">
+                <span class="star">&star;</span>
+                <br>
+                Rating
+                <br>
+                You can rate our cooks
+            </fieldset>
+        </div>
+    </div>
+    <div width="100%" style="height: 400px;">
+        <p class="text4-main">
+            <span class="text4">HomeCook !</span>
+            <br>
+            Where Happiness is truly Homemade.
+            <br>
+            All our meals are freshly prepared for you with the ingredients available with our Yummakers. Every Yummaker
+            who looks to join us, goes through a detailed and impartial checks to ensure that you get true home cooked
+            meal.
+            <br>
+            We check their kitchens, audit them and even go through their grocery bills to ensure they are buying the
+            raw materials from clean sources.
+        </p>
+        <!-- <img class="text4-img" src="https://previews.123rf.com/images/kazakphoto/kazakphoto1410/kazakphoto141000092/32271969-young-woman-cooking-in-the-kitchen-healthy-food-dieting-concept-healthy-lifestyle-cooking-at-home-pr.jpg" height="400px"> -->
+        <div class="text4-img">
+            <img class="text4-imgcol" src="../media/images/main/homepage_images/one9.png">
+            <img class="text4-imgcol" src="../media/images/main/homepage_images/two9.png">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="Mcards">
+        <div class="Mcard">
+            <img class="card__image" src="../media/images/main/homepage_images/chole.png" alt="">
+            <div class="card__content">
+                <p style="font-size: 20px;">
+                    Chole
+                </p>
+            </div>
+            <div class="card__info">
+                <div>
+                    <i class="material-icons">thumb_up</i>
+                    140
+                </div>
+                <div class="card__price">
+                    Rs200
+                </div>
+            </div>
+        </div>
+        <div class="Mcard">
+            <img class="card__image" src="../media/images/main/homepage_images/chole.png" alt="">
+            <div class="card__content">
+                <p style="font-size: 20px;">
+                    Chole
+                </p>
+            </div>
+            <div class="card__info">
+                <div>
+                    <i class="material-icons">thumb_up</i>
+                    140
+                </div>
+                <div class="card__price">
+                    Rs200
+                </div>
+            </div>
+        </div>
+        <div class="Mcard">
+            <img class="card__image" src="../media/images/main/homepage_images/chole.png" alt="">
+            <div class="card__content">
+                <p style="font-size: 20px;">
+                    Chole
+                </p>
+            </div>
+            <div class="card__info">
+                <div>
+                    <i class="material-icons">thumb_up</i>
+                    140
+                </div>
+                <div class="card__price">
+                    Rs200
+                </div>
+            </div>
+        </div>
+        <div class="Mcard">
+            <img class="card__image" src="../media/images/main/homepage_images/chole.png" alt="">
+            <div class="card__content">
+                <p style="font-size: 20px;">
+                    Chole
+                </p>
+            </div>
+            <div class="card__info">
+                <div>
+                    <i class="material-icons">thumb_up</i>
+                    140
+                </div>
+                <div class="card__price">
+                    Rs200
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <p class="end">© Copyright 2020 HomeCooking</p>
+    </footer>
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        var myNav = document.getElementById('mynav');
+        window.onscroll = function () {
+            "use strict";
+            if (document.body.scrollTop >= 100 || document.documentElement.scrollTop >= 100) {
+                myNav.classList.add("nav-colored");
+                myNav.classList.remove("topnav");
+            } else {
+                myNav.classList.add("topnav");
+                myNav.classList.remove("nav-colored");
+            }
+        };
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let time;
+        let check;
+        check = sessionStorage.getItem('doNotShow');
+        if (!check) {
+            sessionStorage.setItem('doNotShow', true);
+            time = 4000;
+
+        } else {
+            time = 0;
+        }
+
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('body').addClass('loaded');
+
+            }, time);
+
+        });
+    </script>
+</body>
+
+</html>

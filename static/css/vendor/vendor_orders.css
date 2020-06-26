@@ -1,0 +1,291 @@
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    font-family: ProximaNova, Arial, Helvetica Neue, sans-serif;
+    letter-spacing: 0;
+    margin: 0;
+    background-color: #37718e;
+    height: 100%;
+}
+
+
+/*navigation bar*/
+
+.main {
+    min-height: auto;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .15);
+    width: 1300px;
+    margin: auto;
+    margin-bottom: 200px;
+    position: relative;
+    margin-top: 5%;
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+    background-color: #fff
+}
+
+.submain {
+    max-width: 1200px;
+    min-width: 1200px;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+}
+
+#left {
+    width: 260px;
+    background-color: #dae0e8;
+}
+
+#left ul {
+    position: sticky;
+    padding: 20px 0;
+    background-color: #dae0e8;
+    top: 20px;
+}
+
+.li {
+    background-color: #dae0e8;
+    padding: 25px 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    width: 240px;
+}
+
+.active {
+    background-color: white;
+    color: #282c3f;
+}
+
+.tag-name {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.text {
+    font-weight: 300;
+    color: #282c3f;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.icon {
+    width: 50px;
+    padding-right: 15px;
+}
+
+.right {
+    background: #fff;
+    padding: 37px 0 0 50px;
+    position: relative;
+}
+
+.box {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    margin: 24px 0 37px;
+    width: 850px;
+    /*border-radius: 10px;*/
+}
+
+.card-content {
+    padding-bottom: 20px;
+    display: flex;
+}
+
+.image {
+    background: rgba(40, 44, 63, .05);
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.user-image {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.user-details {
+    flex: 1;
+    position: relative;
+    padding-left: 18px;
+}
+
+.user-details2 {
+    flex: 1;
+    position: relative;
+    padding-left: 18px;
+    padding-top: 20px;
+}
+
+.name {
+    font-size: 18px;
+    padding-bottom: 3px;
+}
+
+.data {
+    margin-top: 6px;
+    color: #7e808c;
+    font-size: 14px;
+}
+
+.order {
+    padding-top: 20px;
+    position: relative;
+    border-top-style: dotted;
+    border-top-color: #d4d5d9;
+}
+
+.menu {
+    font-size: 15px;
+    padding-right: 240px;
+    color: #282c3f;
+    line-height: 20px;
+}
+
+.total {
+    float: right;
+    position: absolute;
+    top: 22px;
+    right: 0;
+    color: #535665;
+    font-size: 18px;
+    color: green;
+}
+
+.button {
+    display: flex;
+}
+
+.fa-check {
+    color: green;
+    font-size: 20px;
+    padding-right: 8px;
+}
+
+.accept {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    margin-right: 20px;
+    line-height: 40px;
+    height: 40px;
+    color: green;
+    padding: 0 15px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.decline {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    margin-right: 20px;
+    line-height: 40px;
+    height: 40px;
+    color: red;
+    padding: 0 15px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.accept:hover {
+    font-size: 20px;
+    border: 1px solid green;
+}
+
+.decline:hover {
+    font-size: 20px;
+    border: 1px solid red;
+}
+
+.accept1 {
+    font-size: 20px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 20px;
+    line-height: 40px;
+    height: 40px;
+    color: green;
+    padding: 0 15px;
+    margin-top: 10px;
+    position: relative
+}
+
+.process {
+    float: right;
+    position: absolute;
+    margin-top: 10px;
+    right: 0;
+    float: right;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    line-height: 40px;
+    height: 40px;
+    color: white;
+    background-color: red;
+    padding: 0 12px;
+}
+
+.complete {
+    float: right;
+    position: absolute;
+    margin-top: 10px;
+    right: 0;
+    float: right;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    line-height: 40px;
+    height: 40px;
+    color: white;
+    background-color: red;
+    padding: 0 12px;
+}
+
+.deliver,
+.deliver1 {
+    font-size: 20px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 20px;
+    line-height: 40px;
+    height: 40px;
+    color: red;
+    padding: 0 15px;
+    margin-top: 10px;
+    position: relative;
+}
+
+.deliver1 {
+    color: green;
+}
+
+#show2 {
+    display: none;
+}
+
+#show3 {
+    display: none;
+}
+
+#show4 {
+    display: none;
+}

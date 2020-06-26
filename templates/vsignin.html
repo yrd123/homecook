@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vendor Signup</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url("../media/images/vendor/background/vsignin-bg-img.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            color: white;
+        }
+        
+        form {
+            text-align: center;
+        }
+        
+        fieldset {
+            border-radius: 10px;
+            float: right;
+            margin-right: 50px;
+            background-color: #615D5D;
+            width: 400px;
+            height: 870px;
+            margin-top: 20px;
+        }
+        
+        label {
+            display: inline-block;
+            width: 70px;
+            text-align: right;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <form action="/vsignin" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <fieldset>
+            <h1>Sign up</h1>
+            <h1 style="font-size:25px;"><i>home</i><span style="color:red;">COOKING</span></h1>
+            <br>
+            <h2 style="font-size:20px;">Already a user ? <a href="{% url 'login' %}">Login<a></h2>
+<br>
+      <p>{{ v_form.as_p }}</p>
+        <button type="submit" class="btn btn-primary" >Sign In</button><br><br>
+        <p>By creating an account you agree to our <br><a href="#">Terms & Privacy</a>.</p>
+                <br><br>
+
+        </fieldset>
+
+        </font>
+    </form>
+</body>
+</center>
+
+</html>

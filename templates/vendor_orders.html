@@ -1,0 +1,291 @@
+{% extends 'base.html' %} {% block css %} {% load static %}
+<head>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Vendor Orders</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/vendor_orders.css' %}">
+    <script type="text/javascript">
+        function show1() {
+            document.getElementById('show1').style.display = 'block';
+            document.getElementById('show2').style.display = 'none';
+            document.getElementById('show3').style.display = 'none';
+            document.getElementById('show4').style.display = 'none';
+        }
+
+        function show2() {
+            document.getElementById('show2').style.display = 'block';
+            document.getElementById('show3').style.display = 'none';
+            document.getElementById('show1').style.display = 'none';
+            document.getElementById('show4').style.display = 'none';
+
+        }
+
+        function show3() {
+            document.getElementById('show1').style.display = 'none';
+            document.getElementById('show2').style.display = 'none';
+            document.getElementById('show3').style.display = 'block';
+            document.getElementById('show4').style.display = 'none';
+        }
+
+        function show4() {
+            document.getElementById('show1').style.display = 'none';
+            document.getElementById('show2').style.display = 'none';
+            document.getElementById('show4').style.display = 'block';
+            document.getElementById('show3').style.display = 'none';
+        }
+    </script>
+</head>
+{% endblock css %}
+<body>
+    {% block nav %}
+    <div id="mynav">
+        <div class="topnav">
+            <a class="link" href="{% url 'logout' %}">Log Out</a>
+            <a class="link" href="{% url 'vprofile' %}">View Profile</a>
+            <a class="link" href="{% url 'vendoradd' %}">Back</a>
+            <a href="#home" class="icon">
+                <img class="iconimg" src="../media/logo/logo.png">
+            </a>
+        </div>
+    </div>
+    {% endblock nav %} {% block content %}
+    <div class="main">
+        <div class="submain">
+            <div id="left">
+                <ul>
+                    <li class="li active" onclick="show1()">
+                        <span class="icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </span>
+                        <span class="text">Current Orders</span>
+                    </li>
+                    <li class="li" onclick="show2()">
+                        <span class="icon">
+                            <i class="fas fa-user-check"></i>
+                        </span>
+                        <span class="text">Accepted Orders</span>
+                    </li>
+                    <li class="li" onclick="show3()">
+                        <span class="icon">
+                            <i class="fas fa-truck"></i>
+                        </span>
+                        <span class="text">Delivered Orders</span>
+                    </li>
+                    <li class="li" onclick="show4()">
+                        <span class="icon">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                        <span class="text">Rejected Orders</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div id="show1">
+                    <div class="tag-name">Current Orders</div>
+                    {% for order in placed_orders %}
+                    <div class="box">
+                        <div class="card-content">
+                            <div class="image">
+                                {% if order.customer.Image %}
+                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                {% endif %}
+                            </div>
+                            <div class="user-details">
+                                <div class="name">{{order.customer.Name}}</div>
+                                <div class="data">
+                                    ORDER ID:
+                                    <b>{{order.orderId}}</b>
+                                    | {{order.orderDate}}
+                                </div>
+                                <div class="data">{{order.email}}</div>
+                                <div class="data">{{order.phoneNo}}</div>
+                            </div>
+                            <div class="user-details2">
+                                <div class="data">
+                                    <textarea style="border:0px;width:300px;color:rgb(139, 139, 139);height:50px;" readonly>{{order.address}}, {{order.zipCode}}</textarea>
+                                </div>
+                                <div class="data">{{order.paymentMode}}</div>
+                            </div>
+                        </div>
+                        <div class="order">
+                            <div class="menu">{{order.ordered_items}}</div>
+                            <div class="button">
+                                <a href="/order_status/{{order.orderId}}/accepted" style="text-decoration: none;">
+                                    <div class="accept">ACCEPT</div>
+                                </a>
+                                <a href="/order_status/{{order.orderId}}/rejected" style="text-decoration: none;">
+                                    <div class="decline">DECLINE</div>
+                                </a>
+                            </div>
+                            <div class="total">Total : Rs. {{order.grandTotal}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div id="show2">
+                    <div class="tag-name">Accepted Orders</div>
+                    {% for order in accepted_orders %}
+                    <div class="box">
+                        <div class="card-content">
+                            <div class="image">
+                                {% if order.customer.Image %}
+                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                {% endif %}
+                            </div>
+                            <div class="user-details">
+                                <div class="name">{{order.customer.Name}}</div>
+                                <div class="data">
+                                    ORDER ID:
+                                    <b>{{order.orderId}}</b>
+                                    | {{order.orderDate}}
+                                </div>
+                                <div class="data">{{order.email}}</div>
+                                <div class="data">{{order.phoneNo}}</div>
+                            </div>
+                            <div class="user-details2">
+                                <div class="data">
+                                    <textarea style="border:0px;width:300px;color:rgb(139, 139, 139);height:50px;" readonly>{{order.address}}, {{order.zipCode}}</textarea>
+                                </div>
+                                <div class="data">{{order.paymentMode}}</div>
+                            </div>
+                        </div>
+                        <div class="order">
+                            <div class="menu">{{order.ordered_items}}</div>
+                            <div class="button">
+                                <div class="accept1">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                    ACCEPTED
+                                </div>
+                                <a href="/order_status/{{order.orderId}}/delivering" style="text-decoration: none;">
+                                    <div class="process">Sent For Delivery</div>
+                                </a>
+                            </div>
+                            <div class="total">Total : Rs. {{order.grandTotal}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="tag-name">On Process Orders</div>
+                    {% for order in delivering_orders %}
+                    <div class="box">
+                        <div class="card-content">
+                            <div class="image">
+                                {% if order.customer.Image %}
+                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                {% endif %}
+                            </div>
+                            <div class="user-details">
+                                <div class="name">{{order.customer.Name}}</div>
+                                <div class="data">ORDER ID: {{order.orderId}} | {{order.orderDate}}</div>
+                                <div class="data">{{order.email}}</div>
+                                <div class="data">{{order.phoneNo}}</div>
+                            </div>
+                            <div class="user-details2">
+                                <div class="data">
+                                    <textarea style="border:0px;width:300px;color:rgb(139, 139, 139);height:50px;" readonly>{{order.address}}, {{order.zipCode}}</textarea>
+                                </div>
+                                <div class="data">{{order.paymentMode}}</div>
+                            </div>
+                        </div>
+                        <div class="order">
+                            <div class="menu">{{order.ordered_items}}</div>
+                            <div class="button">
+                                <div class="accept1">Delivery in Process</div>
+                                <a href="/order_status/{{order.orderId}}/delivered" style="text-decoration: none;">
+                                    <div class="complete">Delivery Completed</div>
+                                </a>
+                            </div>
+                            <div class="total">Total : Rs. {{order.grandTotal}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div id="show3">
+                    <div class="tag-name">Delivered Orders</div>
+                    {% for order in delivered_orders %}
+                    <div class="box">
+                        <div class="card-content">
+                            <div class="image">
+                                {% if order.customer.Image %}
+                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                {% endif %}
+                            </div>
+                            <div class="user-details">
+                                <div class="name">{{order.customer.Name}}</div>
+                                <div class="data">
+                                    ORDER ID:
+                                    <b>{{order.orderId}}</b>
+                                    | {{order.orderDate}}
+                                </div>
+                                <div class="data">{{order.email}}</div>
+                                <div class="data">{{order.phoneNo}}</div>
+                            </div>
+                            <div class="user-details2">
+                                <div class="data">
+                                    <textarea style="border:0px;width:300px;color:rgb(139, 139, 139);height:50px;" readonly>{{order.address}}, {{order.zipCode}}</textarea>
+                                </div>
+                                <div class="data">{{order.paymentMode}}</div>
+                            </div>
+                        </div>
+                        <div class="order">
+                            <div class="menu">{{order.ordered_items}}</div>
+                            <div class="button">
+                                <div class="deliver1">DELIVERED SUCCESSFULLY</div>
+                            </div>
+                            <div class="total">Total : Rs. {{order.grandTotal}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div id="show4">
+                    <div class="tag-name">Rejected Orders</div>
+                    {% for order in rejected_orders %}
+                    <div class="box">
+                        <div class="card-content">
+                            <div class="image">
+                                {% if order.customer.Image %}
+                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                {% endif %}
+                            </div>
+                            <div class="user-details">
+                                <div class="name">{{order.customer.Name}}</div>
+                                <div class="data">
+                                    ORDER ID:
+                                    <b> {{order.orderId}}</b>
+                                    | {{order.orderDate}}
+                                </div>
+                                <div class="data">{{order.email}}</div>
+                                <div class="data">{{order.phoneNo}}</div>
+                            </div>
+                            <div class="user-details2">
+                                <div class="data">
+                                    <textarea style="border:0px;width:300px;color:rgb(139, 139, 139);height:50px;" readonly>{{order.address}}, {{order.zipCode}}</textarea>
+                                </div>
+                                <div class="data">{{order.paymentMode}}</div>
+                            </div>
+                        </div>
+                        <div class="order">
+                            <div class="menu">{{order.ordered_items}}</div>
+                            <div class="button">
+                                <div class="deliver">REJECTED ORDER</div>
+                            </div>
+                            <div class="total">Total : Rs. {{order.grandTotal}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("left");
+        var btns = header.getElementsByClassName("li");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+    </script>
+    {% endblock content %}
+</body>

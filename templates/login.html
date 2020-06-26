@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url("../media/images/main/background/login-bg-img.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        
+        fieldset {
+            border-radius: 25px;
+            background-color: white;
+            width: 500px;
+        }
+        
+        label {
+            display: inline-block;
+            width: 70px;
+            text-align: right;
+        }
+        
+        button {
+            padding: 10px 20px;
+            color: whitesmoke;
+            border-radius: 10px;
+            border: 0px;
+            background-color: rgb(219, 16, 16);
+        }
+        
+        button:hover {
+            background-color: rgb(255, 0, 0);
+        }
+    </style>
+</head>
+<center>
+
+    <body>
+        <form action="login" method="POST">
+            {% csrf_token %}
+            <br><br>
+            <fieldset><br><br>
+                <h1 style="text-align:center;font-size:30px;"><i>home</i><span style="color:red;">COOKING</span></h1>
+                <h1>Login</h1>
+                <br><br> New Customer <a href="{% url 'csignin' %}"> SignUp</a><br> New Vendor <a href="{% url 'vsignin' %}"> SignUp</a><br><br>
+                <label for="Username"> Username:</label> &nbsp;
+                <input type="text" placeholder="Enter Valid Uswername" id="Username" name="Username" size="24">
+                <br><br>
+                <label for="Password">Password: </label>
+                <input type="password" placeholder="Enter password" id="Password" name="Password" maxlength="20" size="24">
+                <br><br>
+                <button type="submit"><b>Log In</b></button>
+                <br><br><br>
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <br><br>
+            </fieldset>
+
+        </form>
+
+        <div>
+            {% for message in messages %}
+            <h3 style="color: black;">
+                {{message}} {% endfor %}
+            </h3>
+        </div>
+
+    </body>
+</center>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main/about.css' %}">
+    
+</head>
+
+<body>
+    <div id="section1" style="height: 100%">
+        <div class="header">
+            <div class="topnav">
+                <a class="link" href="{% url 'login' %}">Login/Signup</a>
+                <a class="link" href="{% url 'contacts' %}">Contact</a>
+                <a class="link" href="{% url 'index' %}">Home</a>
+                <a href="{% url 'index' %}" class="icon">
+                    <img class="iconimg" src="../media/logo/logo.png">
+                </a>
+            </div>
+        </div>
+        <div class="top-img">
+            <img class="slides"
+                src="../media/images/main/background/about-bg-image.jpg"
+                style="width:100%; height:750px">
+            <div class="text">
+                <h1 style="margin-top: 400px;">
+                    Enjoy the food that takes you back home, a taste that your mouth remembers.
+                    <br>
+                    <br>
+                    So come drop that piece of deliciousness into your mouth and experience the food that woos your
+                    tummy.
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="box" onclick="myFunction()">
+        <span></span>
+        <span></span>
+    </div>
+    </div>
+    <div class="main" id="section2" style="height: 100%">
+        <p class="para" style="font-weight: bold;text-align: center;">
+            We hope you like our services and enjoy your meal!
+        </p>
+        <div class="container">
+            <div style="margin-left: 70px;">
+                <img class="img"
+                    src="../media/images/main/background/about-img1.jpg">
+                <center>
+                    <div class="text-block">
+                        <h1 class="head">What is HomeCook?</h1>
+                        <br>
+                        <p class="text1">
+                            Homefood is a platform which connects Vendors and Customers. Our mission is to provide a
+                            platform to all those who wants to sell food as well as make it easy for people like
+                            hostelites, employees, workers to find good quality food. The cutomers can order
+                            food from the vendor of their choice! Anyone willing to sell the food can sign up to our
+                            website and can sell the food of their choice. So, in this way, we provide job opportunities
+                            for all the food sellers out there and gives
+                            all the customers, the taste of home made food!
+                        </p>
+                    </div>
+                </center>
+            </div>
+        </div>
+        <p class="para" style="font-weight: bold;text-align: center;">
+            Click on the below icons to link to other social platforms.
+            <br>
+            <a href="#">
+                <i class="fa fa-google" style="font-size:25px;color:blue"></i>
+            </a>
+            <a href="#">
+                <i class="fa fa-youtube-play" style="font-size:26px;color:red;"></i>
+            </a>
+            <a href="#">
+                <i class="fa fa-facebook-f" style="font-size:24px;color:blue"></i>
+            </a>
+            <a href="#">
+                <i class="fa fa-instagram "></i>
+            </a>
+        </p>
+    </div>
+    <footer class="footer">
+        <p class="end">© Copyright 2020 HomeCooking</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var $box = $(".box a");
+        $(".box").on("click", function () {
+            $("body,html").animate({
+                scrollTop: 752
+            }, 500)
+        })
+    </script>
+</body>
+
+</html>

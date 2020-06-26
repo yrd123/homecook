@@ -1,0 +1,222 @@
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #f1f1f1;
+  padding: 2%;
+  margin-left: 15px;
+  max-width: 1500px;
+  height: auto;
+  margin-right: 15px;
+  border-radius: 15px;
+}
+
+.flex-container>div {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 15px;
+  height: auto;
+}
+
+#button {
+  background-color: rgb(219, 13, 13);
+  border: none;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  color: whitesmoke;
+}
+
+#button:hover {
+  background-color: red;
+}
+
+.fa {
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+  border-radius: 5px;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+  border-radius: 5px;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+  border-radius: 5px;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+  border-radius: 5px;
+}
+
+.coupon {
+  width: 400px;
+  margin: 0 auto;
+  max-width: 600px;
+  margin-top: 5px;
+}
+
+.coupon1 {
+  width: 700px;
+  margin: 0 auto;
+  height: 600px;
+}
+
+.container1 {
+  padding: 0.5px;
+  background-color: #dadada;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.container2, .container5 {
+  padding: 31.5px;
+  background-color: #dadada;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.container5 {
+  padding: 31.3px;
+}
+
+.form {
+  padding-left: 85px;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type=number], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.gridy {
+  display: grid;
+  grid-template-columns: 38.5% 61.5%;
+  grid-gap: 65px;
+}
+
+.container3 {
+  line-height: 30px;
+  background-color: #dadada;
+  border-radius: 15px 15px 0px 0px;
+  width: 250px;
+  text-align: center;
+  height: 33px;
+}
+
+.container4 {
+  direction: rtl;
+  margin-bottom: 27px;
+  background-color: white;
+  border-radius: 15px 15px 0px 0px;
+  width: 245px;
+  font-size: 20px;
+}
+
+.container4 input {
+  display: none;
+  size: 0px;
+}
+
+.container4 label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  left: 0;
+}
+
+.container4 label:before {
+  content: '\f005';
+  position: absolute;
+  font-family: fontAwesome;
+  display: inline-block;
+  color: black;
+  top: 0;
+  left: 0;
+}
+
+.container4 label:after {
+  content: '\f005';
+  position: absolute;
+  font-family: fontAwesome;
+  display: inline-block;
+  color: yellow;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.container4 label:hover:after, .container4 label:hover~label:after, .container4 input:checked~label:after {
+  opacity: 1;
+}
+
+.field {
+  height: auto;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+@media screen and (max-width: 1200px) {
+  .coupon {
+    width: 100%;
+    margin: auto;
+    border-radius: 30px;
+    margin-top: 15px
+  }
+  .coupon1 {
+    width: 100%;
+    margin-left: 34px;
+    margin-right: 34px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    border-radius: 30px;
+  }
+}
+
+.footer {
+  padding: 1.5% 15%;
+}

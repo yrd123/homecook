@@ -1,0 +1,282 @@
+{% extends 'base.html' %} 
+{% block css %} 
+{% load static %}
+<title>My cart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,400|Ubuntu&display=swap" rel="stylesheet">
+<!-- CSS Stylesheets -->
+<link rel="stylesheet" href="{% static 'css/customer/mycart.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="styles.css">-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/aeaca870f5.js" crossorigin="anonymous"></script>
+<!-- Bootstrap Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock css %}
+{% block nav %}
+<div id="mynav">
+    <div class="topnav">
+        <a class="link" href="{% url 'logout' %}">Log Out</a>
+        <a class="link" href="{% url 'cprofile' %}">View Profile</a>
+        <a class="link" href="{% url 'customer_orders' %}">Your Orders</a>
+        <a href="#home" class="icon">
+            <img class="iconimg" src="../media/logo/logo.png">
+        </a>
+    </div>
+</div>
+{% endblock nav %}
+
+        {% block content %}
+<div id="main">
+    <!--cart contents here-->
+    <div class="row">
+        <div>
+            <h1 class="main-heading">
+                <i class="fas fa-shopping-cart"></i>
+                My Cart
+            </h1>
+            <span id="urls">
+                <a href="/customer2/{{userv}}">
+                    <button
+                        type="button"
+                        name="explore"
+                        id="explore"
+                        class="button explore"
+                    >Explore Menu</button>
+                </a>
+            </span>
+        </div>
+        <div class="leftcolumn" id="items">
+            <!-- displaying cart items -->
+            <br>
+            <!--code of this div is in javascript -->
+        </div>
+        <div class="rightcolumn">
+            <div class="kitchen-items grid-container">
+                <h2 class="right-heading">Kitchen</h2>
+                <div class="subheading grid-item">{{vendor.Kitchen}}</div>
+                <div class="grid-item">
+                    <button
+                        type="button"
+                        class="button"
+                        style="font-size: 20px;"
+                        data-toggle="modal"
+                        data-target="#detail"
+                    >View Details</button>
+                </div>
+            </div>
+            <form method="POST" action="/payment">
+                {% csrf_token %}
+                <input
+                    type="hidden"
+                    id="userv"
+                    name="userv"
+                    value="{{ userv }}"
+                >
+                <div class="price-details grid-container">
+                    <h2 class="right-heading">Price Details</h2>
+                    <div class="price-grid">
+                        <div class="grid-item">Subtotal</div>
+                        <div class="grid-item">
+                            ₹
+                            <span id="subTotal"></span>
+                        </div>
+                        <input
+                            type="hidden"
+                            id="subTotalInput"
+                            name="subTotalInput"
+                            value=""
+                        >
+                        <div class="grid-item">Tax</div>
+                        <div class="grid-item">
+                            ₹
+                            <span id="tax"></span>
+                        </div>
+                        <input
+                            type="hidden"
+                            id="taxInput"
+                            name="taxInput"
+                            value=""
+                        >
+                        <div class="grid-item">Delivery</div>
+                        <div class="grid-item">
+                            ₹
+                            <span id="delivery"></span>
+                        </div>
+                        <input
+                            type="hidden"
+                            id="deliveryInput"
+                            name="deliveryInput"
+                            value=""
+                        >
+                        <div class="grid-item">Discount</div>
+                        <div class="grid-item">
+                            -₹
+                            <span id="discount"></span>
+                        </div>
+                        <input
+                            type="hidden"
+                            id="discountInput"
+                            name="discountInput"
+                            value=""
+                        >
+                        <div class="grid-item" style="border-top:1px solid rgb(194, 194, 194);">Grand Total</div>
+                        <div class="grid-item" style="border-top:1px solid rgb(194, 194, 194);color:green">
+                            ₹
+                            <span id="grandTotal"></span>
+                        </div>
+                        <input
+                            type="hidden"
+                            id="grandTotalInput"
+                            name="grandTotalInput"
+                            value=""
+                        >
+                    </div>
+                </div>
+                <div class="card">
+                    <button class="button" type="submit" name="button">Proceed To Payment</button>
+                </div>
+            </form>
+        </div>
+        <!-- Modal -->
+        <div
+            class="modal fade"
+            id="detail"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="detail"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5
+                            class="modal-title"
+                            id="detailtitle"
+                            style="font-size:32px; font-style:bold;"
+                            align="center"
+                        >Kitchen details</h5>
+                        <!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                        <!--                  <span aria-hidden="true">&times;</span>-->
+                        <!--                </button>-->
+                    </div>
+                    <div class="modal-body" style="font-size:22px;">
+                        <label for="name" >Name:</label>
+                        <p id="name">{{vendor.Name}}</p>
+                        <label for="kitchen-name">Kitchen Name:</label>
+                        <p id="kitchen-name">{{vendor.Kitchen}}</p>
+                        <label for="email">Email Id:</label>
+                        <p id="email">{{vendor.Email}}</p>
+                        <label for="address">Address:</label>
+                        <p id="address">{{vendor.Address}}</p>
+                        <label for="code">Code:</label>
+                        <p id="code">{{vendor.Code}}</p>
+                        <label for="phone">Phone:</label>
+                        <p id="phone">{{vendor.PhoneNo}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        if (localStorage.getItem('cart-{{ user }}-{{ userv }}') == null || localStorage.getItem('cart-{{ user }}-{{ userv }}') == {}) {
+            var cart = {};
+        } else {
+            var totalQ = 0;
+            var totalP = 0;
+            cart = JSON.parse(localStorage.getItem('cart-{{ user }}-{{ userv }}'));
+            for (var i in cart) {
+                totalQ = Number(totalQ) + Number(cart[i]['quantity']);
+                totalP = Number(totalP) + (Number(cart[i]['quantity']) * Number(cart[i]['price']));
+            }
+
+        }
+
+        displayCartItems();
+
+        function displayCartItems() {
+            document.getElementById("items").innerHTML = ""; //refreshing cart for delete items
+            if ($.isEmptyObject(cart)) {
+                //if cart is empty
+                $('#items').append(`<h3>Your cart is empty!! Please add some items before continuing.</h3>`);
+            } else {
+                //if cart is not empty
+                for (i in cart) { //i is for item
+                    let name = i;
+                    let quantity = cart[i]['quantity'];
+                    let price = Number(cart[i]['quantity']) * Number(cart[i]['price']);
+                    mystr = `<div class="card">
+                    <div class="grid-container items">
+                      <div class="grid-item" >
+                        <span class="name">${name}</span>
+                      </div>
+                      <div class="grid-item">
+                        <div>
+                          Quantity
+                        </div>
+                        <div>
+                            <span class="quantity">${quantity}</span>
+                        </div>
+                      </div>
+                      <div class="grid-item">
+                        <div>
+                          Price
+                        </div>
+                        <div>
+                          ₹ <span  class="price">${price}</span>
+                        </div>
+                      </div>
+                      <div class="grid-item">
+                        <button type="button" name="delete" class="delete" onclick="deleteItem(this)"><i class="fas fa-trash-alt"></i></button>
+                      </div>
+                    </div>
+                  </div> `
+
+                    $('#items').append(mystr);
+                }
+
+            }
+        }
+
+        function deleteItem(item) {
+            let name = item.parentNode.parentNode.querySelector(".name").innerHTML;
+            delete cart[name];
+            localStorage.setItem('cart-{{ user }}-{{ userv }}', JSON.stringify(cart)); //saving cart items permanently
+            localStorage.setItem('cart-{{ user }}', JSON.stringify(cart));
+            displayCartItems(); //display cart after deleting
+            grandTotal(); //calculating total after deleting
+
+        }
+
+        grandTotal();
+
+        function grandTotal() {
+            var subTotal = 0;
+            for (i in cart) { //i is for item
+                let price = Number(cart[i]['quantity']) * Number(cart[i]['price']);
+                subTotal = Number(subTotal) + Number(price);
+            }
+            var discount = Number(subTotal) * 0.1;
+            var tax = Number(subTotal) * 0.15;
+            var delivery = Number(subTotal) * 0.05;
+            var grandTotal = Number(subTotal) + Number(delivery) + Number(tax) - Number(discount);
+            document.getElementById("subTotal").innerHTML = subTotal;
+            document.getElementById("subTotalInput").value = subTotal;
+            document.getElementById("tax").innerHTML = tax;
+            document.getElementById("taxInput").value = tax;
+            document.getElementById("delivery").innerHTML = delivery;
+            document.getElementById("deliveryInput").value = delivery;
+            document.getElementById("discount").innerHTML = discount;
+            document.getElementById("discountInput").value = discount;
+            document.getElementById("grandTotal").innerHTML = grandTotal;
+            document.getElementById("grandTotalInput").value = grandTotal;
+
+        }
+    </script>
+    {% endblock content %}

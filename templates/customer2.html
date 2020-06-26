@@ -1,0 +1,198 @@
+{% extends 'base.html' %} {% block css %}{% load static %}
+
+<head>
+    <title>Buy Food</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400|Ubuntu&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/customer/customer2.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/aeaca870f5.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+{% endblock css %}
+
+<body>
+    {% block nav %}
+
+    <div id="mynav">
+        <div class="topnav">
+
+            <a class="link" href="{% url 'logout' %}">Log Out</a>
+            <a class="link" href="{% url 'cprofile' %}">View Profile</a>
+            <a class="link" href="{% url 'customer_orders' %}">Your Orders</a>
+            <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+
+        </div>
+    </div>
+
+    {% endblock nav %} {% block content %}
+    <div id="main">
+
+        <div class="items">
+
+            <div class="Pcardcontainer">
+
+                {% for item in items %}
+                <div class="Pcard" id="id-{{item.name}}">
+                    <!--<img class="Pcard__image" src="images\chole.png" alt="">-->
+                    <div class="Pcard__name">
+                        <span style="font-size: 25px;" class="name" id="name-{{item.name}}" name="name">{{item.name}}</span>
+                    </div>
+                    <div class="Pcard__addtocart" onclick="addToCart(this)">
+                        <i style="padding-right: 11%;padding-top:35%;font-size: 20px;color: black;" class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div id="pcard_price" name="pcard_price" class="Pcard__price">
+                        Rs. <span class="price" id="price-{{item.name}}">{{item.price}}</span>
+                    </div>
+                    <div class="inpcontainer">
+                        <input id="quantity-{{item.name}}" name="quantity" type="number" class="inp quantity" min="0" max="{{item.quantity}}">
+                    </div>
+                    <input type="hidden" id="preference-{{item.name}}" name="preference" class="preference" value="veg">
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <div class="right_part">
+            <!--changes here-->
+            <div class="vendor">
+                <div class="vinfo">
+                    {% for v in vendor %} {% if v.Image %}
+                    <img class="vimage" src="{{v.Image.url}}" alt=""> {% endif %}
+                    <div class="vcontent">
+                        <p style="font-size: 20px;">
+                            {{v.Kitchen}}
+                        </p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="ucart">
+                <div class="uinfo">
+                    <div class="ucontent">
+                        <p style="font-size: 20px;">
+                            Summary
+                        </p>
+                    </div>
+                    <div class="utable">
+                        <table>
+                            <tr style="text-emphasis: em;font-size: medium;">
+                                <td> Total Quantity</td>
+                                <td>&nbsp:&nbsp</td>
+                                <td id="totalQuantity"></td>
+                            </tr>
+                            <tr style="text-emphasis: em;font-size: 20px;color:rgb(36, 173, 48)">
+                                <td>Total Amount</td>
+                                <td>&nbsp:&nbsp</td>
+                                <td id="totalPrice" name="totalP" value="0"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <a style="font-size: 25px;text-align: center;color:white;text-decoration: none;" href="/mycart/{{userv}}">
+                        <div class="uviewcart">
+                            VIEW CART &nbsp; <i style="color: black;" class="fas fa-shopping-cart"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var quantities = document.getElementsByName("quantity"); //setting all quantities to zero
+        for (var i = 0; i < quantities.length; i++) {
+            quantities[i].value = 0;
+        }
+        console.log(localStorage.getItem('vendorname-{{user}}'));
+        // checking if cart is empty or not
+        if (localStorage.getItem('cart-{{ user }}-{{ userv }}') == null || localStorage.getItem('cart-{{ user }}-{{ userv }}') == {}) {
+            var cart = {};
+            var totalQ = 0;
+            var totalP = 0;
+
+            document.getElementById("totalQuantity").innerHTML = totalQ;
+            document.getElementById("totalPrice").innerHTML = "₹ " + totalP;
+        }
+
+        // if cart contains items
+        else {
+
+            var totalQ = 0;
+            var totalP = 0;
+            let x = 0;
+            cart = JSON.parse(localStorage.getItem('cart-{{ user }}-{{userv}}'));
+            //checking if the item still exists and is not deleted by vendor
+            names = document.querySelectorAll(".name");
+            for (var c in cart) {
+                for (var n = 0; n < names.length; n++) {
+                    if (c == names[n].innerHTML) {
+                        x = 1;
+                        break;
+                    }
+                }
+                if (x == 0) {
+                    delete cart[c];
+                    localStorage.setItem('cart-{{ user }}-{{ userv }}', JSON.stringify(cart));
+                    localStorage.setItem('cart-{{ user }}', JSON.stringify(cart));
+                }
+            }
+            //calculating subtotal price of cart items
+            for (var i in cart) {
+                document.getElementById("quantity-" + i).value = cart[i]['quantity'];
+                totalQ = Number(totalQ) + Number(cart[i]['quantity']);
+                totalP = Number(totalP) + (Number(cart[i]['quantity']) * Number(cart[i]['price']));
+            }
+            document.getElementById("totalQuantity").innerHTML = totalQ;
+            document.getElementById("totalPrice").innerHTML = "₹ " + totalP;
+
+
+        }
+
+        //if quantity of appending item is not zero then add to cart 
+        function addToCart(item) {
+            if (item.parentNode.querySelector('.quantity').value != 0) {
+
+                var name = item.parentNode.querySelector('.name').innerHTML;
+                var quantity = item.parentNode.querySelector('.quantity').value;
+                var price = item.parentNode.querySelector('.price').innerHTML;
+                cart[name] = {
+                    'quantity': quantity,
+                    'price': price
+                };
+                localStorage.setItem('cart-{{ user }}-{{ userv }}', JSON.stringify(cart));
+                localStorage.setItem('cart-{{ user }}', JSON.stringify(cart));
+                var totalQ = 0;
+                var totalP = 0;
+                for (var i in cart) {
+                    totalQ = Number(totalQ) + Number(cart[i]['quantity']);
+                    totalP += (Number(cart[i]['quantity']) * Number(cart[i]['price']));
+                }
+                document.getElementById("totalQuantity").innerHTML = totalQ;
+                document.getElementById("totalPrice").innerHTML = "₹ " + totalP;
+            }
+        }
+    </script>
+
+    {% endblock content %}
+</body>
+
+
+</html>
