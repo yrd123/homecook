@@ -25,7 +25,7 @@ SECRET_KEY = 'i)h%wwu65c-41j)sa3oe-0nng=1n)yl-v4%!e$no0zmzn533md'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['homecookingapp.herokuapp.com']
 
 
 # Application definition
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'homecook.urls'
@@ -78,11 +79,13 @@ WSGI_APPLICATION = 'homecook.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        ''' 'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'homecook',
         'USER':'postgres',
         'PASSWORD':'postgres',
-        'HOST':'localhost'
+        'HOST':'localhost' '''
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -142,3 +145,6 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
 
 CRISPY_TEMPLATE_PACK='bootstrap4'
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
