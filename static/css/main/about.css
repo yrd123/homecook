@@ -120,6 +120,8 @@ body, html {
     position: relative;
 }
 
+
+
 .text-block {
     position: absolute;
     bottom: 100px;
@@ -204,6 +206,14 @@ body, html {
 /* On smaller screens, decrease text size */
 
 @media screen and (max-width: 600px) {
+    .topnav{
+        height:50px;
+    }
+    .topnav a.link{
+        margin-top: 20px;
+        padding:10px 10px;
+        font-size:15px;
+    }
     .para {
         margin-left: 10px;
         width: 100%;
@@ -212,6 +222,9 @@ body, html {
     .container {
         margin-left: 10px;
         width: 100%;
+    }
+    .container>div{
+        margin-left: 0px !important;
     }
     .img {
         margin-left: 10px;
@@ -244,7 +257,7 @@ body, html {
 
 @media only screen and (max-width: 749px) {
     .para {
-        margin-left: 10px;
+        margin-left: 0px;
         width: 100%;
         font-size: 14px;
     }
@@ -253,10 +266,10 @@ body, html {
         width: 100%;
     }
     .img {
-        margin-left: 10px;
-        margin-right: 10px;
-        width: 425px;
+        margin-left: 0px;
+        margin-right: 0px;
         height: 300px;
+        width: 100%;
     }
     .text {
         font-size: 10px;
@@ -265,10 +278,11 @@ body, html {
         bottom: 5px;
         height: 265px;
         top: 15px;
-        left: 120px;
+        left: 0px;
+        margin: 5px;
         font-size: 10px;
         font-weight: 400;
-        width: 300px;
+        width: 98%;
     }
     .head {
         margin-top: 15px;

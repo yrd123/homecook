@@ -25,7 +25,7 @@ SECRET_KEY = 'i)h%wwu65c-41j)sa3oe-0nng=1n)yl-v4%!e$no0zmzn533md'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['homecookingapp.herokuapp.com']
+ALLOWED_HOSTS = ['homecookingapp.herokuapp.com','127.0.0.1']
 
 
 # Application definition
