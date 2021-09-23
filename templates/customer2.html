@@ -34,7 +34,7 @@
             <a class="link" href="{% url 'logout' %}">Log Out</a>
             <a class="link" href="{% url 'cprofile' %}">View Profile</a>
             <a class="link" href="{% url 'customer_orders' %}">Your Orders</a>
-            <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+            <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"  alt="logo"></a>
 
         </div>
     </div>
@@ -75,7 +75,7 @@
             <div class="vendor">
                 <div class="vinfo">
                     {% for v in vendor %} {% if v.Image %}
-                    <img class="vimage" src="{{v.Image.url}}" alt=""> {% endif %}
+                    <img class="vimage" src="{{v.Image.url}}" alt="vimage"> {% endif %}
                     <div class="vcontent">
                         <p style="font-size: 20px;">
                             {{v.Kitchen}}

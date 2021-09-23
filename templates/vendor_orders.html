@@ -45,7 +45,7 @@
             <a class="link" href="{% url 'vprofile' %}">View Profile</a>
             <a class="link" href="{% url 'vendoradd' %}">Back</a>
             <a href="#home" class="icon">
-                <img class="iconimg" src="../media/logo/logo.png">
+                <img class="iconimg" src="../media/logo/logo.png" alt="logo">
             </a>
         </div>
     </div>
@@ -88,7 +88,7 @@
                         <div class="card-content">
                             <div class="image">
                                 {% if order.customer.Image %}
-                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                <img class="user-image" src="{{order.customer.Image.url}}"  alt="cuteomer">
                                 {% endif %}
                             </div>
                             <div class="user-details">
@@ -130,7 +130,7 @@
                         <div class="card-content">
                             <div class="image">
                                 {% if order.customer.Image %}
-                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                <img class="user-image" src="{{order.customer.Image.url}}"  alt="customer">
                                 {% endif %}
                             </div>
                             <div class="user-details">
@@ -171,7 +171,7 @@
                         <div class="card-content">
                             <div class="image">
                                 {% if order.customer.Image %}
-                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                <img class="user-image" src="{{order.customer.Image.url}}"  alt="customer">
                                 {% endif %}
                             </div>
                             <div class="user-details">
@@ -207,7 +207,7 @@
                         <div class="card-content">
                             <div class="image">
                                 {% if order.customer.Image %}
-                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                <img class="user-image" src="{{order.customer.Image.url}}"  alt="customer">
                                 {% endif %}
                             </div>
                             <div class="user-details">
@@ -244,7 +244,7 @@
                         <div class="card-content">
                             <div class="image">
                                 {% if order.customer.Image %}
-                                <img class="user-image" src="{{order.customer.Image.url}}">
+                                <img class="user-image" src="{{order.customer.Image.url}}"  alt="customer">
                                 {% endif %}
                             </div>
                             <div class="user-details">

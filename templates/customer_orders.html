@@ -28,7 +28,7 @@
         <a class="link" href="{% url 'logout' %}">Log Out</a>
         <a class="link" href="{% url 'cprofile' %}">View Profile</a>
         <a class="link" href="{% url 'customer_orders' %}">Your Orders</a>
-        <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+        <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"  alt="logo"></a>
 
     </div>
 </div>
@@ -56,7 +56,7 @@
                     <div class="card-content">
                         <div class="image">
                             {% if order.vendor.Image %}
-                            <img class="user-image" src="{{order.vendor.Image.url}}"> {% endif %}
+                            <img class="user-image" src="{{order.vendor.Image.url}}"  alt="orderimg"> {% endif %}
                         </div>
                         <div class="user-details">
                             <div class="name">{{order.vendor.Kitchen}}</div>
@@ -95,7 +95,7 @@
                     <div class="card-content">
                         <div class="image">
                             {% if order.vendor.Image %}
-                            <img class="user-image" src="{{order.vendor.Image.url}}"> {% endif %}
+                            <img class="user-image" src="{{order.vendor.Image.url}}"  alt="vendor"> {% endif %}
                         </div>
                         <div class="user-details">
                             <div class="name">{{order.vendor.Kitchen}}</div>

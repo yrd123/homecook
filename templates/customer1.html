@@ -30,14 +30,14 @@
         <a class="link" href="{% url 'logout' %}">Log Out</a>
         <a>{% for c in cprofile %}
         {% if c.Image %}
-        <img src="{{ c.Image.url }}" height="50px" width="50px" style="border-radius: 50%;padding:0px;float:right;margin-top:15px; ">
+        <img src="{{ c.Image.url }}" height="50px" width="50px" style="border-radius: 50%;padding:0px;float:right;margin-top:15px; "  alt="profile">
         {% endif %}
         {% endfor %}
       </a>
         <a class="link" href="{% url 'cprofile' %}">View Profile</a>
 
         <a class="link" href="{% url 'customer_orders' %}">Your Orders</a>
-        <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+        <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"  alt="logo"></a>
 
     </div>
 </div>
@@ -52,7 +52,7 @@
         <a href="customer2/{{card.Username}}" style="text-decoration: none;color:rgb(0, 0, 0)">
             <div class="grid-items" onclick="customer2('{{card.Username}}')">
                 {% if card.Image %}
-                <img class="card__image" src="{{card.Image.url}}"> {% endif %}
+                <img class="card__image" src="{{card.Image.url}}"  alt="img"> {% endif %}
                 <div class="card__content">
                     <p id="kitchenname" name="kitchenname" style="font-size: 20px;">
                         {{card.Kitchen}}

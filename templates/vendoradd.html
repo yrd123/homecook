@@ -20,7 +20,7 @@
             <a class="link" href="{% url 'logout' %}">Log Out</a>
             <a class="link" href="{% url 'vprofile' %}">View Profile</a>
             <a class="link" href="{% url 'vendor_orders' %}">Your Orders</a>
-            <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+            <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"  alt="logo"></a>
 
         </div>
     </div>
@@ -34,7 +34,7 @@
 
         <div class="propic">
             {% if Dp.Image %}
-            <img style="height: 100%;width:100%;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.61);border-radius: 5px;" src="{{Dp.Image.url}}"> {% endif %}
+            <img style="height: 100%;width:100%;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.61);border-radius: 5px;" src="{{Dp.Image.url}}"  alt="profile"> {% endif %}
         </div>
 
         <div class="list">

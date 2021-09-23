@@ -108,7 +108,7 @@
         <a class="link" href="{% url 'cprofile' %}">View Profile</a>
         <a class="link" href="{% url 'customer_orders' %}">Your Orders</a>
         <a href="#home" class="icon">
-            <img class="iconimg" src="../media/logo/logo.png">
+            <img class="iconimg" src="../media/logo/logo.png"  alt="logo">
         </a>
     </div>
 </div>
@@ -153,7 +153,7 @@
             <label for="Image" style="height: 150px;">Image</label>
             <div class="img">
                 {% if info.Image%}
-                <img src="{{ info.Image.url }}" height="100%" width="35%"> {% endif %}
+                <img src="{{ info.Image.url }}" height="100%" width="35%"  alt="img"> {% endif %}
             </div>
         </div>
         <div class="row2">

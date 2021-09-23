@@ -109,7 +109,7 @@
         <a class="link" href="{% url 'logout' %}">Log Out</a>
         <a class="link" href="{% url 'vendor_orders' %}">Your Orders</a>
         <a class="link" href="{% url 'vendoradd' %}">Back</a>
-        <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"></a>
+        <a href="#home" class="icon"><img class="iconimg" src="../media/logo/logo.png"  alt="logo"></a>
 
     </div>
 </div>
@@ -172,7 +172,7 @@
             <label for="Image" style="height: 150px;">Image</label>
             <div class="img">
                 {% if info.Image %}
-                <img src="{{ info.Image.url }}" height="100%" width="50%"> {% endif %}
+                <img src="{{ info.Image.url }}" height="100%" width="50%" alt="img"> {% endif %}
             </div>
 
         </div>

@@ -54,7 +54,7 @@
             <a class="link" href="{% url 'about' %}">About</a>
             <a class="link" href="{% url 'index' %}">Home</a>
             <a href="{% url 'index' %}" class="icon">
-                <img class="iconimg" src="../media/logo/logo.png">
+                <img class="iconimg" src="../media/logo/logo.png"  alt="logo">
             </a>
         </div>
     </div>
@@ -62,7 +62,7 @@
         {% block content %}
     <div class="main">
         <div class="left">
-            <img class="image" src="../media/images/customer/background/payment1-img1.jpg">
+            <img class="image" src="../media/images/customer/background/payment1-img1.jpg"  alt="img">
         </div>
         <form method="POST" action="/customer_orders">
             {% csrf_token %}
@@ -173,9 +173,9 @@
                         onclick="show2();"
                     >
                     <span class="cod">Credit /Debit Cards</span>
-                    <img src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d8844094130711885b5e41b28c9848f.svg">
-                    <img src="https://js.stripe.com/v3/fingerprinted/img/visa-365725566f9578a9589553aa9296d178.svg">
-                    <img src="https://js.stripe.com/v3/fingerprinted/img/amex-a49b82f46c5cd6a96a6e418a6ca1717c.svg">
+                    <img src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d8844094130711885b5e41b28c9848f.svg"  alt="img">
+                    <img src="https://js.stripe.com/v3/fingerprinted/img/visa-365725566f9578a9589553aa9296d178.svg"  alt="img">
+                    <img src="https://js.stripe.com/v3/fingerprinted/img/amex-a49b82f46c5cd6a96a6e418a6ca1717c.svg"  alt="img">
                 </label>
                 <div id="div2" class="hide">
                     <div id="payment-form">
