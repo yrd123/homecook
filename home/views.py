@@ -329,3 +329,7 @@ def customer_orders(request):
 
 def sitemap(request):
     return HttpResponse(open('sitemap.xml').read(), content_type='text/xml')
+
+
+def robots(request):
+    return HttpResponse(open('robots.txt', 'r').read(), content_type="text/plain")

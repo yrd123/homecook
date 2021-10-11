@@ -23,7 +23,8 @@ urlpatterns = [
     path('mycart/<str:vendorname>',views.mycart,name="mycart"),
     path('payment',views.payment,name="payment"),
     path('customer_orders',views.customer_orders,name="customer_orders"), 
-    path('sitemap.xml', views.sitemap, name="sitemap") 
+    path('sitemap.xml', views.sitemap, name="sitemap"),
+    path('robots.txt', views.robots, name="robots") ,
     
 ]
 
