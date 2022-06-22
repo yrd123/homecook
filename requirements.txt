@@ -20,7 +20,7 @@ idna==2.9
 jdcal==1.4.1
 jmespath==0.10.0
 MarkupPy==1.14
-numpy==1.18.4
+numpy==1.22.0
 odfpy==1.4.1
 opencv-contrib-python==4.2.0.34
 openpyxl==3.0.3
